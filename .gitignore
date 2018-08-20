@@ -1,0 +1,11 @@
+*__pycache__*
+*.idea*
+*node_modules*
+*.db
+*logs*
+*venv*
+*.vscode*
+*\.pem
+*\.crx
+.pylintrc
+notes.txt
