@@ -1,0 +1,43 @@
+  {
+    "name": "Netflix and Comment",
+    "version": "1.4",
+    "description": "Read and write comments on Netflix shows.",
+    "permissions": ["activeTab",
+      "declarativeContent",
+      "storage",
+      "*://*.netflix.com/"
+    ],
+
+    "background": {
+      "scripts": ["js/background.js"],
+      "persistent": false
+    },
+
+    "page_action": {
+      "default_popup": "templates/popup.html",
+      "default_icon": {
+        "16": "images/smallicon16.png",
+        "32": "images/smallicon32.png",
+        "48": "images/smallicon48.png",
+        "128": "images/smallicon128.png"
+      }
+    },
+
+    "content_scripts": [{
+      "matches": [
+        "*://www.netflix.com/*",
+        "*://netflix-and-chat.com/*" 
+      ],
+      "js": ["js/content.js"],
+      "run_at": "document_end"
+    }],
+
+    "icons": {
+      "16": "images/smallicon16.png",
+      "32": "images/smallicon32.png",
+      "48": "images/smallicon48.png",
+      "128": "images/smallicon128.png"
+    },
+
+    "manifest_version": 2
+  }

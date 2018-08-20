@@ -1,0 +1,52 @@
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/popup.css">
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="panel panel-primary">
+    <div class="panel-heading" id="top">
+        <span class="glyphicon glyphicon-comment"></span> Comments
+
+        <div id="name-input-div" class="col-xs-5 pull-right">
+                <input id="name-input" 
+                        type="text" 
+                        class="form-control input-xs" 
+                        placeholder="Name here."
+                        maxlength="16"/>
+        </div>
+    </div>
+</div>
+<div class="panel-body">
+    <ul class="chat" id="content">
+    </ul>
+</div>
+    <div class="panel-footer" id="bottom">
+        <div class="input-group">
+            <input id="btn-input" 
+                   type="text" 
+                   class="form-control input-sm" 
+                   placeholder="Type your message here..."
+                   maxlength="400" />
+            <span class="input-group-btn">
+                <button class="btn btn-warning btn-sm" 
+                        id="btn-chat">Send</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/bundle.js"></script>
+
+</body>
+</html>
