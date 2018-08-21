@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from app.models import Comment
 from app import app, db
+from expletives import badwords
 
 
 def create_comment_dict(comment):
@@ -46,6 +47,9 @@ def get_comments_of_track(track_id):
 def create_comment():
     data = request.get_json()
     
+    if any([bw in data['text'] for bw in badwords]):
+        return jsonify({'message': 'Write rejected because of profanity.'})
+
     new_comment = Comment(name=data['name'],
                           text=data['text'],
                           track_id=data['track_id'])
