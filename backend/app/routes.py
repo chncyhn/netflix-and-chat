@@ -46,7 +46,7 @@ def get_comments_of_track(track_id):
 @app.route('/comment', methods=['POST'])
 def create_comment():
     data = request.get_json()
-    
+
     if any([bw in data['text'] for bw in badwords]):
         return jsonify({'message': 'Write rejected because of profanity.'})
 
