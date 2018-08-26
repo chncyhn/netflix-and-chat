@@ -1,8 +1,9 @@
 from flask import request, jsonify
 from app.models import Comment
 from app import app, db
-from expletives import badwords
+from profanityfilter import ProfanityFilter
 
+pf = ProfanityFilter()
 
 def create_comment_dict(comment):
     """
@@ -47,7 +48,7 @@ def get_comments_of_track(track_id):
 def create_comment():
     data = request.get_json()
 
-    if any([bw in data['text'] for bw in badwords]):
+    if not pf.is_clean(data['text']):
         return jsonify({'message': 'Write rejected because of profanity.'})
 
     new_comment = Comment(name=data['name'],
