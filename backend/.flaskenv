@@ -1,1 +1,1 @@
-FLASK_APP=netflixandcomment.py
+FLASK_APP=netflixandchat.py
