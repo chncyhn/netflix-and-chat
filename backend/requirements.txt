@@ -1,5 +1,0 @@
-Flask
-flask-restful
-flask_sqlalchemy
-python-dotenv
-profanityfilter
