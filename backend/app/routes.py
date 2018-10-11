@@ -1,7 +1,9 @@
 from flask import request, jsonify
+from profanityfilter import ProfanityFilter
+
 from app.models import Comment
 from app import app, db
-from profanityfilter import ProfanityFilter
+from app.rating_helpers import fetch_imdb_rating
 
 pf = ProfanityFilter()
 
@@ -16,6 +18,24 @@ def create_comment_dict(comment):
     comment_data['date'] = comment.date.strftime('%d %b %Y, %H:%M')
 
     return comment_data
+
+
+@app.route('/imdb-rating', methods=['POST'])
+def get_imdb_rating():
+    """
+    Get the rating of the movie from imdb
+    :return:
+    """
+    data = request.get_json()
+
+    app.logger.info(f"Fetching rating for track_name: {data['track_name']}")
+
+    try:
+        rating = fetch_imdb_rating(data['track_name'])
+        return jsonify({"rating": rating})
+    except:
+        app.logger.info(f"Fetching failed for track_name: {data['track_name']}")
+        return jsonify({"rating": 'Not Available.'})
 
 
 @app.route('/comment/all', methods=['GET'])
